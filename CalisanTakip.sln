@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalisanTakipWebUI", "CalisanTakipWebUI\CalisanTakipWebUI.csproj", "{C7B8400E-14FC-4907-B948-B4AB441BBC9A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalisanTakipDAL", "CalisanTakipDAL\CalisanTakipDAL.csproj", "{7C3DC783-D67A-4554-81DD-EAEEF096A427}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalisanTakipEntity", "CalisanTakipEntity\CalisanTakipEntity.csproj", "{A79805BC-F06B-4016-A9CC-D425F90C8C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalisanTakipCommon", "CalisanTakipCommon\CalisanTakipCommon.csproj", "{EEF4866E-81E8-42C4-92E4-1164258EED74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalisanTakipBLL", "CalisanTakipBLL\CalisanTakipBLL.csproj", "{C4C903A2-3427-4637-B7F0-793B173E2E9B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7B8400E-14FC-4907-B948-B4AB441BBC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7B8400E-14FC-4907-B948-B4AB441BBC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7B8400E-14FC-4907-B948-B4AB441BBC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7B8400E-14FC-4907-B948-B4AB441BBC9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C3DC783-D67A-4554-81DD-EAEEF096A427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C3DC783-D67A-4554-81DD-EAEEF096A427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C3DC783-D67A-4554-81DD-EAEEF096A427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C3DC783-D67A-4554-81DD-EAEEF096A427}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A79805BC-F06B-4016-A9CC-D425F90C8C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A79805BC-F06B-4016-A9CC-D425F90C8C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A79805BC-F06B-4016-A9CC-D425F90C8C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A79805BC-F06B-4016-A9CC-D425F90C8C48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEF4866E-81E8-42C4-92E4-1164258EED74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEF4866E-81E8-42C4-92E4-1164258EED74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEF4866E-81E8-42C4-92E4-1164258EED74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEF4866E-81E8-42C4-92E4-1164258EED74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4C903A2-3427-4637-B7F0-793B173E2E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4C903A2-3427-4637-B7F0-793B173E2E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4C903A2-3427-4637-B7F0-793B173E2E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4C903A2-3427-4637-B7F0-793B173E2E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A11CD2DC-D270-4213-ABD8-113D60F21E9E}
+	EndGlobalSection
+EndGlobal
