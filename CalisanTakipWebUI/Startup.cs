@@ -1,3 +1,5 @@
+using CalisanTakipBLL.Abstract;
+using CalisanTakipBLL.Concrete;
 using CalisanTakipCommon.Mappings;
 using CalisanTakipDAL.Abstract;
 using CalisanTakipDAL.Concrete.EFCore.MsSql;
@@ -42,9 +44,10 @@ namespace CalisanTakipWebUI
 
             //-------------------------------------------------
             services.AddAutoMapper(typeof(Maps));
-            services.AddScoped<IIzinTalepDal, IzinTalepDal>();
-            services.AddScoped<IIzinTanimDal, IzinTanimDal>();
-            services.AddScoped<IIzinTipiDal, IzinTipiDal>();
+            //services.AddScoped<IIzinTalepDal, IzinTalepDal>();
+            //services.AddScoped<IIzinTanimDal, IzinTanimDal>();
+            //services.AddScoped<IIzinTipiDal, IzinTipiDal>();
+            services.AddScoped<IIzinTipiService, IzinTipiManager>();
 
 
         }
