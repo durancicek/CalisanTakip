@@ -48,6 +48,7 @@ namespace CalisanTakipWebUI
             //services.AddScoped<IIzinTanimDal, IzinTanimDal>();
             //services.AddScoped<IIzinTipiDal, IzinTipiDal>();
             services.AddScoped<IIzinTipiService, IzinTipiManager>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
         }
