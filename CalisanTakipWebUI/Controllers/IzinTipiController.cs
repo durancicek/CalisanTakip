@@ -17,6 +17,12 @@ namespace CalisanTakipWebUI.Controllers
 
         public IActionResult Index()
         {
+            var data = _izinTipiService.GetAllIzinTipi();
+            if (data.IsSuccess) // Başarılı olursa view döndürülecek
+            {
+                var result = data.Data;
+                return View(result);
+            }
            
             return View();
         }

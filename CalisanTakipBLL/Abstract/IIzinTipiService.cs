@@ -1,4 +1,5 @@
-﻿using CalisanTakipCommon.ResultModels;
+﻿using CalisanTakipCommon;
+using CalisanTakipCommon.ResultModels;
 using CalisanTakipEntity;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace CalisanTakipBLL.Abstract
 {
     public interface IIzinTipiService
     {
-        Result<List<IzinTipi>> GetAllIzinTipi();
+        Result<List<IzinTipiVM>> GetAllIzinTipi();
 
     }
 }
