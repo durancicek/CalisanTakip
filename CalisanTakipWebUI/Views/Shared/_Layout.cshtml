@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
@@ -14,7 +14,10 @@
 
     <!-- page specific plugin styles -->
     <!-- text fonts -->
-    <link rel="stylesheet" href="~/css/fonts.googleapis.com.css" />
+
+    @*<link href="~/css/fonts.googleapis.com.css" rel="stylesheet" />*@ @*türkçe karakter sorunu var*@ 
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
 
     <!-- ace styles -->
     <link rel="stylesheet" href="~/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
@@ -159,7 +162,7 @@
                 <li class="">
                     <a asp-controller="IzinTipi" asp-action="Index">
                         <i class="menu-icon fa fa-pencil-square-o"></i>
-                        İzin Tipi Girişi
+                        İzin Tipi Girisi
                     </a>
                 </li>
 
