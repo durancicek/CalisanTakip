@@ -1,4 +1,5 @@
 ﻿using CalisanTakipBLL.Abstract;
+using CalisanTakipCommon;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -26,5 +27,32 @@ namespace CalisanTakipWebUI.Controllers
            
             return View();
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(IzinTipiVM model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var data = _izinTipiService.CreateIzinTipi(model);
+                if (data.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(model);
+            }
+            else
+            {
+                return View(model);
+            }
+
+            
+
+        }
+
     }
 }

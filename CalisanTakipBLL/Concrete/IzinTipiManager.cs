@@ -30,6 +30,8 @@ namespace CalisanTakipBLL.Concrete
         }
 
       
+
+
         #endregion
 
         #region CostomMethots
@@ -62,10 +64,34 @@ namespace CalisanTakipBLL.Concrete
 
             #region 2.Yöntem
             var izinTipi = _mapper.Map<List<IzinTipi>, List<IzinTipiVM>>(data);
-            return new Result<List<IzinTipiVM>>(true, ResultConstant.RecordFound, izinTipi); 
+            return new Result<List<IzinTipiVM>>(true, ResultConstant.RecordFound, izinTipi);
             #endregion
-        }
 
+        }
+        public Result<IzinTalepVM> CreateIzinTipi(IzinTipiVM model) // izin talep yazıldı kontrol et
+        {
+            if (model!=null)
+            {
+                try
+                {
+                    var izintipi = _mapper.Map<IzinTipiVM, IzinTipi>(model);
+                    izintipi.KayitTarihi = DateTime.Now;
+                    _unitOfWork.izinTipiDal.Add(izintipi);
+                    _unitOfWork.Save();
+                    return new Result<IzinTalepVM>(true, ResultConstant.RecordCreateSuccessfully);
+                }
+                catch (Exception ex)
+                {
+                    return new Result<IzinTalepVM>(false, ResultConstant.RecordCreateNotSuccessfully + "=>" + ex.Message.ToString());
+                    throw;
+                }
+
+            }
+            else
+            {
+                return new Result<IzinTalepVM>(false, "Data Boş Geçilemez!");
+            }
+        }
         #endregion
     }
 }

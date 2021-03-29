@@ -13,5 +13,13 @@ namespace CalisanTakipBLL.Abstract
     {
         Result<List<IzinTipiVM>> GetAllIzinTipi();
 
+        /// <summary>
+        /// Yeni izin tipi kayıt metotdu
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        Result<IzinTalepVM> CreateIzinTipi(IzinTipiVM model);
+
+
     }
 }
