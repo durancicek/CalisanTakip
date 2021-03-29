@@ -24,14 +24,15 @@ namespace CalisanTakipWebUI.Controllers
                 var result = data.Data;
                 return View(result);
             }
-           
+
             return View();
         }
+
+
         public IActionResult Create()
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Create(IzinTipiVM model)
         {
@@ -50,9 +51,43 @@ namespace CalisanTakipWebUI.Controllers
                 return View(model);
             }
 
-            
+
 
         }
 
+
+        public IActionResult Edit(int id)
+        {
+            if (id < 0)
+                return View();
+
+            var data = _izinTipiService.GetByIdIzinTipi(id);
+
+            if (data.IsSuccess)
+                return View(data.Data);
+             
+            return View();
+        }
+
+        [ValidateAntiForgeryToken] // Edit aksiyonun Get'i çağırılmadan Post işlemi yapılamaz.Js tarafında kodları tetikletmeyi engellemek için yazıldı.
+        [HttpPost]
+        public IActionResult Edit(IzinTipiVM model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                var data = _izinTipiService.EditGetByIdIzinTipi(model);
+                if (data.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(model);
+            }
+            else
+            {
+                return View(model);
+            }
+
+        }
     }
 }

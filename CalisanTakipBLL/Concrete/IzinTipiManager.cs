@@ -68,7 +68,7 @@ namespace CalisanTakipBLL.Concrete
             #endregion
 
         }
-        public Result<IzinTalepVM> CreateIzinTipi(IzinTipiVM model) // izin talep yazıldı kontrol et
+        public Result<IzinTipiVM> CreateIzinTipi(IzinTipiVM model) 
         {
             if (model!=null)
             {
@@ -78,18 +78,59 @@ namespace CalisanTakipBLL.Concrete
                     izintipi.KayitTarihi = DateTime.Now;
                     _unitOfWork.izinTipiDal.Add(izintipi);
                     _unitOfWork.Save();
-                    return new Result<IzinTalepVM>(true, ResultConstant.RecordCreateSuccessfully);
+                    return new Result<IzinTipiVM>(true, ResultConstant.RecordCreateSuccessfully);
                 }
                 catch (Exception ex)
                 {
-                    return new Result<IzinTalepVM>(false, ResultConstant.RecordCreateNotSuccessfully + "=>" + ex.Message.ToString());
+                    return new Result<IzinTipiVM>(false, ResultConstant.RecordCreateNotSuccessfully + "=>" + ex.Message.ToString());
                     throw;
                 }
 
             }
             else
             {
-                return new Result<IzinTalepVM>(false, "Data Boş Geçilemez!");
+                return new Result<IzinTipiVM>(false, "Data Boş Geçilemez!");
+            }
+        }
+
+        public Result<IzinTipiVM> GetByIdIzinTipi(int id)
+        {
+            var data = _unitOfWork.izinTipiDal.Get(id);
+            if (data!=null)
+            {
+                var izintipi = _mapper.Map<IzinTipi, IzinTipiVM>(data);
+                return new Result<IzinTipiVM>(true, ResultConstant.RecordFound, izintipi);
+
+            }
+            else
+            {
+                return new Result<IzinTipiVM>(false, ResultConstant.RecordNotFound);
+            }
+
+        }
+
+        public Result<IzinTipiVM> EditGetByIdIzinTipi(IzinTipiVM model)
+        {
+            if (model != null)
+            {
+                try
+                {
+                    var izintipi = _mapper.Map<IzinTipiVM, IzinTipi>(model);
+                    izintipi.KayitTarihi = DateTime.Now;
+                    _unitOfWork.izinTipiDal.Update(izintipi);
+                    _unitOfWork.Save();
+                    return new Result<IzinTipiVM>(true, ResultConstant.RecordCreateSuccessfully);
+                }
+                catch (Exception ex)
+                {
+                    return new Result<IzinTipiVM>(false, ResultConstant.RecordCreateNotSuccessfully + "=>" + ex.Message.ToString());
+                    throw;
+                }
+
+            }
+            else
+            {
+                return new Result<IzinTipiVM>(false, "Data Boş Geçilemez!");
             }
         }
         #endregion
