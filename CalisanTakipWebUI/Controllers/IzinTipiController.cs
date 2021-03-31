@@ -24,7 +24,7 @@ namespace CalisanTakipWebUI.Controllers
                 var result = data.Data;
                 return View(result);
             }
-           
+
             return View();
         }
         public IActionResult Create()
@@ -54,15 +54,15 @@ namespace CalisanTakipWebUI.Controllers
 
         public ActionResult Edit(int id)
         {
-            if (id<0)
-            return View();
+            if (id < 0)
+                return View();
 
             var data = _izinTipiService.GetByIdIzinTipi(id);
             if (data.IsSuccess)
                 return View(data.Data);
             return View();
 
-            
+
         }
 
 
@@ -84,6 +84,26 @@ namespace CalisanTakipWebUI.Controllers
             {
                 return View(model);
             }
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int id)
+        {
+            if (id <= 0)
+            {
+                return Json(new { success = false, mesaj = "Silmek için Kayıt Seçiniz" });
+            }
+            else
+            {
+                
+            }
+            var data = _izinTipiService.RemoveIzinTipi(id);
+
+            if (data.IsSuccess)
+                return Json(new { success = data.IsSuccess, mesaj = data.Mesaj });
+            else
+                return Json(new { success = data.IsSuccess, mesaj = data.Mesaj });
+
         }
 
 

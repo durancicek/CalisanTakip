@@ -37,7 +37,7 @@ namespace CalisanTakipBLL.Concrete
         #region CostomMethots
         public Result<List<IzinTipiVM>>GetAllIzinTipi()
         {
-            var data = _unitOfWork.izinTipiDal.GetAll().ToList(); //Tüm dataları getirmesi için kullanıldı
+            var data = _unitOfWork.izinTipiDal.GetAll(e => e.IsActive == true).ToList(); //Tüm dataları getirmesi için kullanıldı
 
             #region 1.Yöntem
 
@@ -68,7 +68,7 @@ namespace CalisanTakipBLL.Concrete
             #endregion
 
         }
-        public Result<IzinTalepVM> CreateIzinTipi(IzinTipiVM model) // izin talep yazıldı kontrol et
+        public Result<IzinTipiVM> CreateIzinTipi(IzinTipiVM model) // izin talep yazıldı kontrol et
         {
             if (model!=null)
             {
@@ -76,20 +76,21 @@ namespace CalisanTakipBLL.Concrete
                 {
                     var izintipi = _mapper.Map<IzinTipiVM, IzinTipi>(model);
                     izintipi.KayitTarihi = DateTime.Now;
+                    izintipi.IsActive = true;
                     _unitOfWork.izinTipiDal.Add(izintipi);
                     _unitOfWork.Save();
-                    return new Result<IzinTalepVM>(true, ResultConstant.RecordCreateSuccessfully);
+                    return new Result<IzinTipiVM>(true, ResultConstant.RecordCreateSuccessfully);
                 }
                 catch (Exception ex)
                 {
-                    return new Result<IzinTalepVM>(false, ResultConstant.RecordCreateNotSuccessfully + "=>" + ex.Message.ToString());
+                    return new Result<IzinTipiVM>(false, ResultConstant.RecordCreateNotSuccessfully + "=>" + ex.Message.ToString());
                     throw;
                 }
 
             }
             else
             {
-                return new Result<IzinTalepVM>(false, "Data Boş Geçilemez!");
+                return new Result<IzinTipiVM>(false, "Data Boş Geçilemez!");
             }
         }
 
@@ -134,6 +135,28 @@ namespace CalisanTakipBLL.Concrete
                
             }
         }
+
+        public Result<IzinTipiVM> RemoveIzinTipi(int id)
+        {
+            var data = _unitOfWork.izinTipiDal.Get(id);
+            if (data!= null)
+            {
+                
+                data.IsActive = false;
+                _unitOfWork.izinTipiDal.Update(data);
+                _unitOfWork.Save();
+                return new Result<IzinTipiVM>(true, ResultConstant.RecordCreateSuccessfully);
+
+            }
+            else
+            {
+                return new Result<IzinTipiVM>(false, ResultConstant.RecordCreateNotSuccessfully);
+
+            }
+
+        }
+
+       
         #endregion
     }
 }

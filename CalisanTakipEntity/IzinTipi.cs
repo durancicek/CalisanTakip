@@ -11,5 +11,6 @@ namespace CalisanTakipEntity
         public string Ad { get; set; }
         public int VarsayilanGun { get; set; }
         public DateTime KayitTarihi { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -45,9 +45,13 @@
                                     <i class="ace-icon fa fa-pencil bigger-120"></i>
                                 </a>
 
-                                <a class="btn btn-xs btn-danger" asp-controller="IzinTipi" asp-action="Edit">
+                                <a id="btnRemove(@item.Id)" class="btn btn-xs btn-danger"  data-id="@item.Id">
                                     <i class="ace-icon fa fa-trash-o bigger-120"></i>
                                 </a>
+
+                                @*<a class="btn btn-xs btn-danger" onclick="btnRemove"  data-id="@item.Id">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </a>*@
 
                                 <a class="btn btn-xs btn-warning" asp-controller="IzinTipi" asp-action="Edit">
                                     <i class="ace-icon fa fa-flag bigger-120"></i>
@@ -65,3 +69,70 @@
     </div><!-- /.span -->
 </div>
 
+@section Scripts{
+
+
+
+    @*<script type="text/javascript">
+        $(document).ready(
+            function removeItem(rowId) {
+                swal({
+                    title: 'Silmek İstediğinize Emin Misiniz?',
+                    text: 'Silinen Data Geri Alınamaz!',
+                    icon: 'warning',
+                    buttons: true,
+                    dangerMode: true
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            type: "Delete",
+                            url: "/IzinTipi/Delete/" + rowId,
+                            success: function (data) {
+                                if (data.success) {
+                                    toastr.success(data.message);
+                                    location.reload();
+                                } else {
+                                    toastr.error(data.message);
+                                }
+                            }
+                        });
+                    }
+                });
+
+
+    </script>*@
+
+
+
+
+    <script type="text/javascript">
+            $(document).ready(function () {
+                $('#btnRemove').on("click", function () {
+                    var id = $("#btnRemove").data("id");
+                    swal({
+                        title: 'Silmek İstediğinize Emin Misiniz?',
+                        text: 'Silinen Data Geri Alınamaz!',
+                        icon: 'warning',
+                        buttons: true,
+                        dangerMode: true
+                    }).then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: "Delete",
+                                url: "/IzinTipi/Delete/" + id,
+                                success: function (data) {
+                                    if (data.success) {
+                                        toastr.success(data.message);
+                                        location.reload();
+                                    } else {
+                                        toastr.error(data.message);
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+
+}

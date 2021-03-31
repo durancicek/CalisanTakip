@@ -18,7 +18,7 @@ namespace CalisanTakipBLL.Abstract
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Result<IzinTalepVM> CreateIzinTipi(IzinTipiVM model);
+        Result<IzinTipiVM> CreateIzinTipi(IzinTipiVM model);
 
 
         /// <summary>
@@ -29,6 +29,9 @@ namespace CalisanTakipBLL.Abstract
         Result<IzinTipiVM> GetByIdIzinTipi(int id);
 
         Result<IzinTipiVM> EditGetByIdIzinTipi(IzinTipiVM model);
+
+        Result<IzinTipiVM> RemoveIzinTipi(int id);
+
 
 
 
