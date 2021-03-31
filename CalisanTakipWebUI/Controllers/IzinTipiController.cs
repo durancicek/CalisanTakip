@@ -50,9 +50,42 @@ namespace CalisanTakipWebUI.Controllers
                 return View(model);
             }
 
-            
-
         }
+
+        public ActionResult Edit(int id)
+        {
+            if (id<0)
+            return View();
+
+            var data = _izinTipiService.GetByIdIzinTipi(id);
+            if (data.IsSuccess)
+                return View(data.Data);
+            return View();
+
+            
+        }
+
+
+        [ValidateAntiForgeryToken] // Edit aksiyonu Get edilmeden Post edilemez.Js tarafından kodları tetikletmeyi engellemek için yazıldı.
+        [HttpPost]
+        public IActionResult Edit(IzinTipiVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var data = _izinTipiService.EditGetByIdIzinTipi(model);
+                if (data.IsSuccess)
+                {
+                    return RedirectToAction("Index");
+                }
+                return View(model);
+
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+
 
     }
 }

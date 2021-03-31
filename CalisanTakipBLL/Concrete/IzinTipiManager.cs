@@ -92,6 +92,48 @@ namespace CalisanTakipBLL.Concrete
                 return new Result<IzinTalepVM>(false, "Data Boş Geçilemez!");
             }
         }
+
+        public Result<IzinTipiVM> GetByIdIzinTipi(int id)
+        {
+            var data = _unitOfWork.izinTipiDal.Get(id);
+            if (data != null)
+            {
+                var izintipi = _mapper.Map<IzinTipi, IzinTipiVM>(data);
+                return new Result<IzinTipiVM>(true, ResultConstant.RecordFound, izintipi);
+
+            }
+            else
+            {
+                return new Result<IzinTipiVM>(false, ResultConstant.RecordNotFound);
+            }
+
+        }
+
+        public Result<IzinTipiVM> EditGetByIdIzinTipi(IzinTipiVM model)
+        {
+            if (model != null)
+            {
+                try
+                {
+                    var izintipi = _mapper.Map<IzinTipiVM, IzinTipi>(model);
+                    izintipi.KayitTarihi = DateTime.Now;
+                    _unitOfWork.izinTipiDal.Update(izintipi);
+                    _unitOfWork.Save();
+                    return new Result<IzinTipiVM>(true, ResultConstant.RecordCreateSuccessfully);
+                }
+                catch (Exception ex)
+                {
+                    return new Result<IzinTipiVM>(false, ResultConstant.RecordCreateNotSuccessfully + "=>" + ex.Message.ToString());
+                    throw;
+                }
+
+            }
+            else
+            {
+                return new Result<IzinTipiVM>(false, "Data Boş Geçilemez!");
+               
+            }
+        }
         #endregion
     }
 }
