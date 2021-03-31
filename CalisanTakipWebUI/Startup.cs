@@ -3,6 +3,7 @@ using CalisanTakipBLL.Concrete;
 using CalisanTakipCommon.Mappings;
 using CalisanTakipDAL.Abstract;
 using CalisanTakipDAL.Concrete.EFCore.MsSql;
+using CalisanTakipEntity;
 using CalisanTakipWebUI.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,8 +39,9 @@ namespace CalisanTakipWebUI
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<SqlServerDbContext>();
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<SqlServerDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<SqlServerDbContext>();
             services.AddControllersWithViews();
 
             //-------------------------------------------------
@@ -49,6 +51,8 @@ namespace CalisanTakipWebUI
             //services.AddScoped<IIzinTipiDal, IzinTipiDal>();
             services.AddScoped<IIzinTipiService, IzinTipiManager>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+          
 
 
         }
